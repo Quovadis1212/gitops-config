@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: contoso-app-prod
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://github.com/Quovadis1212/gitops-config.git
+    targetRevision: prod
+    path: contoso-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: example-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
