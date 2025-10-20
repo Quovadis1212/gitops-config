@@ -16,10 +16,52 @@ grafana:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
-      - grafana.contoso.local
-    path: /
+      - grafana.contoso.local      
+    path: /                        
     pathType: Prefix
     tls:
       - hosts:
           - grafana.contoso.local
         secretName: grafana-tls
+
+  persistence:
+    enabled: true
+    size: 2Gi
+
+  dashboards:
+    default:
+      kubernetes-cluster:
+        gnetId: 315
+        revision: 4
+        datasource: Prometheus
+
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://contoso-monitoring-prometheus:9090
+          access: proxy
+          isDefault: true
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    serviceMonitorSelectorNilUsesHelmValues: false
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        cpu: 200m
+        memory: 512Mi
+
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    replicas: 1
