@@ -1,5 +1,6 @@
 grafana:
   enabled: true
+  fullnameOverride: grafana
   admin:
     existingSecret: ""
     user: admin
