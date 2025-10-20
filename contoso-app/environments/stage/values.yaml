@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/quovadis1212/contoso-app
-  tag: "release-candidate"
+  tag: "5c79d000ae90a70d0501ee43a82d0a8318cf870c"
 
 service:
   type: ClusterIP
