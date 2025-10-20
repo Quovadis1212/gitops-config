@@ -10,7 +10,7 @@ spec:
     targetRevision: main
     path: contoso-monitoring
     helm: 
-      skipCrds: false
+      skipCrds: true
   destination:
     server: https://kubernetes.default.svc
     namespace: contoso-monitoring
