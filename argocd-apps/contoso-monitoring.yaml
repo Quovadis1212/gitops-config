@@ -9,9 +9,7 @@ spec:
     repoURL: https://github.com/Quovadis1212/gitops-config.git
     targetRevision: main
     path: contoso-monitoring
-    helm:
-      valueFiles:
-        - environments/prod/values.yaml
+    helm: {} 
   destination:
     server: https://kubernetes.default.svc
     namespace: contoso-monitoring
