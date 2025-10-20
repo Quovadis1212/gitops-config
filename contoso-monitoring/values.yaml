@@ -47,6 +47,8 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     scrapeInterval: 30s
     evaluationInterval: 30s
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}    
     resources:
       requests:
         cpu: 50m
