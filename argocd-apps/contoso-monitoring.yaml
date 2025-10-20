@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: contoso-monitoring
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Quovadis1212/gitops-config.git
+    targetRevision: main
+    path: contoso-monitoring
+    helm:
+      valueFiles:
+        - environments/prod/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: contoso-monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

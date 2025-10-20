@@ -1,0 +1,8 @@
+apiVersion: v2
+name: contoso-monitoring
+version: 1.0.0
+description: Monitoring Stack für GitOps Workflow
+dependencies:
+  - name: kube-prometheus-stack
+    version: "61.7.0"
+    repository: "https://prometheus-community.github.io/helm-charts"
