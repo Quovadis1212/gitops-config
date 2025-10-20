@@ -9,8 +9,7 @@ spec:
     repoURL: https://github.com/Quovadis1212/gitops-config.git
     targetRevision: main
     path: contoso-monitoring
-    helm:
-      skipCrds: true
+    helm: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: contoso-monitoring
@@ -19,4 +18,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - Replace=true
+      - ServerSideApply=true 
