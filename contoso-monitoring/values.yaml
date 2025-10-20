@@ -1,9 +1,9 @@
 grafana:
   enabled: true
   admin:
-    existingSecret: ""   
+    existingSecret: ""
     user: admin
-    password: ""        
+    password: ""
 
   service:
     type: ClusterIP
@@ -43,24 +43,19 @@ grafana:
 
 prometheus:
   prometheusSpec:
-    retention: 15d
+    retention: 7d
     serviceMonitorSelectorNilUsesHelmValues: false
     scrapeInterval: 30s
     evaluationInterval: 30s
     resources:
       requests:
-        cpu: 100m
-        memory: 512Mi
+        cpu: 50m
+        memory: 256Mi
       limits:
-        cpu: 250m
-        memory: 1Gi
+        cpu: 200m
+        memory: 512Mi
 
 alertmanager:
   enabled: true
   alertmanagerSpec:
     replicas: 1
-  config:
-    global:
-      resolve_timeout: 5m
-    route:
-      group_by: ['alertname']
