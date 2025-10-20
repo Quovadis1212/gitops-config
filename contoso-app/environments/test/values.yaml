@@ -8,12 +8,12 @@ service:
 
 resources:
   limits:
-    cpu: 250m
-    memory: 256Mi
+    cpu: 300m
+    memory: 384Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 150m
+    memory: 192Mi
 
 ingress:
-  enabled: false
-  host: ""
+  enabled: true
+  host: contoso-app.test.contoso.local

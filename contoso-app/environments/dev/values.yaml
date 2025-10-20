@@ -15,5 +15,5 @@ resources:
     memory: 128Mi
 
 ingress:
-  enabled: false
-  host: ""
+  enabled: true
+  host: contoso-app.dev.contoso.local
