@@ -33,7 +33,9 @@ grafana:
       kubernetes-cluster:
         gnetId: 315
         revision: 4
-        datasource: Prometheus
+        datasource: prometheus
+      operations-overview:
+        file: dashboards/operations-overview.json
 
   datasources:
     datasources.yaml:

@@ -1,0 +1,131 @@
+{
+  "id": null,
+  "title": "Operations Overview",
+  "description": "Gesamtüberblick über Cluster, GitOps und Applikationsmetriken",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Gesunde ArgoCD-Applikationen",
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 },
+      "targets": [
+        {
+          "expr": "count(argocd_app_health_status{health_status=\"Healthy\"})"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "type": "graph",
+      "title": "ArgoCD Synchronisationsdauer (s)",
+      "gridPos": { "x": 6, "y": 0, "w": 12, "h": 6 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.9, sum(rate(argocd_app_sync_duration_seconds_bucket[5m])) by (le))",
+          "legendFormat": "Sync Duration (p90)"
+        }
+      ],
+      "lines": true
+    },
+    {
+      "type": "gauge",
+      "title": "CPU-Auslastung (Cluster)",
+      "gridPos": { "x": 0, "y": 6, "w": 6, "h": 4 },
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace!=\"\",container!=\"POD\"}[2m])) / sum(machine_cpu_cores) * 100",
+          "legendFormat": "CPU %"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "max": 100
+        }
+      }
+    },
+    {
+      "type": "gauge",
+      "title": "Arbeitsspeicher-Auslastung (Cluster)",
+      "gridPos": { "x": 6, "y": 6, "w": 6, "h": 4 },
+      "targets": [
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace!=\"\",container!=\"POD\"}) / sum(machine_memory_bytes) * 100"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "max": 100
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Pods im Fehlerzustand",
+      "gridPos": { "x": 12, "y": 6, "w": 6, "h": 4 },
+      "targets": [
+        {
+          "expr": "count(kube_pod_status_phase{phase=~\"Failed|CrashLoopBackOff\"})"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "reduceOptions": { "calcs": ["lastNotNull"] },
+        "textMode": "auto"
+      }
+    },
+    {
+      "type": "graph",
+      "title": "HTTP-Responsezeiten (Beispielapplikation)",
+      "gridPos": { "x": 0, "y": 10, "w": 12, "h": 6 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job=\"contoso-app\"}[5m])) by (le))",
+          "legendFormat": "P95 Response"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Fehlerrate Beispielapplikation (%)",
+      "gridPos": { "x": 12, "y": 10, "w": 6, "h": 6 },
+      "targets": [
+        {
+          "expr": "(sum(rate(http_requests_total{job=\"contoso-app\",status!~\"2..\"}[5m])) / sum(rate(http_requests_total{job=\"contoso-app\"}[5m]))) * 100"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "max": 100
+        }
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Pipeline- und Deploymentzeiten",
+      "gridPos": { "x": 0, "y": 16, "w": 18, "h": 6 },
+      "targets": [
+        {
+          "expr": "avg(rate(argocd_app_sync_duration_seconds_sum[5m]) / rate(argocd_app_sync_duration_seconds_count[5m]))",
+          "legendFormat": "Durchschnittliche Sync-Dauer"
+        }
+      ],
+      "lines": true
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  }
+}
