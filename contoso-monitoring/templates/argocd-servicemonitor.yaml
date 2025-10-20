@@ -4,7 +4,7 @@ metadata:
   name: argocd
   namespace: argocd
   labels:
-    release: contoso-monitoring
+    release: contoso-monitoring          
 spec:
   selector:
     matchLabels:
@@ -13,9 +13,7 @@ spec:
     matchNames:
       - argocd
   endpoints:
-    - port: metrics
+    - port: metrics                     
       interval: 30s
       scrapeTimeout: 10s
-      scheme: http
-      honorLabels: true
       path: /metrics
