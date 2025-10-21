@@ -50,11 +50,16 @@ grafana:
 prometheus:
   prometheusSpec:
     retention: 7d
-    serviceMonitorSelectorNilUsesHelmValues: false
     scrapeInterval: 30s
-    evaluationInterval: 30s
-    serviceMonitorSelector: {}
-    podMonitorSelector: {}
+    evaluationInterval: 30s    
+    serviceMonitorSelector:
+      matchLabels:
+        monitoring: enabled
+    podMonitorSelector:
+      matchLabels:
+        monitoring: enabled
+    serviceMonitorNamespaceSelector: {}
+    podMonitorNamespaceSelector: {}
     resources:
       requests:
         cpu: 50m
@@ -62,6 +67,7 @@ prometheus:
       limits:
         cpu: 200m
         memory: 512Mi
+
 
 alertmanager:
   enabled: true
