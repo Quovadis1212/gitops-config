@@ -15,11 +15,13 @@ spec:
       - key: app.kubernetes.io/name
         operator: In
         values:
-          - argocd-server-metrics
-          - argocd-repo-server-metrics
-          - argocd-application-controller-metrics
+          - argocd-server
+          - argocd-repo-server
+          - argocd-application-controller
+
   endpoints:
-    - port: metrics
+    - port: http-metrics
       scheme: http
       interval: 30s
       scrapeTimeout: 10s
+
