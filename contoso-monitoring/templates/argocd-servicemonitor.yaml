@@ -5,15 +5,20 @@ metadata:
   namespace: contoso-monitoring
   labels:
     release: contoso-monitoring
+    monitoring: enabled
 spec:
   namespaceSelector:
     matchNames:
       - argocd
   selector:
-    matchLabels:
-      app.kubernetes.io/instance: argocd
+    matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values:
+          - argocd-metrics
+          - argocd-repo-server-metrics
+          - argocd-server-metrics
   endpoints:
     - port: http-metrics
-      scheme: http
       interval: 30s
       scrapeTimeout: 10s
