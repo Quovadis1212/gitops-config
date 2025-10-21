@@ -11,10 +11,15 @@ spec:
     matchNames:
       - argocd
   selector:
-    matchLabels:
-      app.kubernetes.io/part-of: argocd
+    matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values:
+          - argocd-server-metrics
+          - argocd-repo-server-metrics
+          - argocd-application-controller-metrics
   endpoints:
-    - port: http-metrics
+    - port: http-metrics       
       scheme: http
       interval: 30s
       scrapeTimeout: 10s
