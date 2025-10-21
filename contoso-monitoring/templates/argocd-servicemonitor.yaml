@@ -11,9 +11,8 @@ spec:
     matchNames:
       - argocd
   selector:
-    matchExpressions:
-      - { key: app.kubernetes.io/name, operator: In,
-          values: ["argocd-server","argocd-repo-server","argocd-application-controller"] }
+    matchLabels:
+      app.kubernetes.io/instance: argocd
   endpoints:
     - port: metrics
       scheme: http
