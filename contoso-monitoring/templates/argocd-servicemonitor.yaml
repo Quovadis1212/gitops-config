@@ -15,9 +15,6 @@ spec:
       - key: app.kubernetes.io/name
         operator: In
         values:
-          - argocd-server
-          - argocd-repo-server
-          - argocd-application-controller
           - argocd-server-metrics
           - argocd-repo-server-metrics
           - argocd-application-controller-metrics
