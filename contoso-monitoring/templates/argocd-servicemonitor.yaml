@@ -1,5 +1,5 @@
 apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
+kind: ServiceMonitor
 metadata:
   name: argocd-metrics
   namespace: contoso-monitoring
@@ -11,11 +11,11 @@ spec:
     matchNames:
       - argocd
   selector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-server
-  podMetricsEndpoints:
-    - port: metrics       
+    matchExpressions:
+      - { key: app.kubernetes.io/name, operator: In,
+          values: ["argocd-server","argocd-repo-server","argocd-application-controller"] }
+  endpoints:
+    - port: metrics
       scheme: http
-      path: /metrics
       interval: 30s
       scrapeTimeout: 10s
