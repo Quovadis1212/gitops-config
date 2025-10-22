@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v99
 name: contoso-app
 description: Helm-Chart für die Bereitstellung der Contoso-App
 version: 1.0.1
