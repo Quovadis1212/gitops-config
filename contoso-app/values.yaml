@@ -1,11 +1,10 @@
 image:
   repository: ghcr.io/quovadis1212/contoso-app
-  tag: "latest"
+  tag: "doesntexist"
 
 service:
   type: ClusterIP
   port: 3000
-  invalid_line_here:
 
 resources:
   limits:
