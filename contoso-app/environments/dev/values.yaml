@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/quovadis1212/contoso-app
-  tag: "latest"
+  tag: "does-not-exist"
 
 service:
   type: ClusterIP
