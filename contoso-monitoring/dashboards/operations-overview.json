@@ -732,507 +732,6 @@
         "x": 0,
         "y": 28
       },
-      "id": 7,
-      "panels": [],
-      "title": "K3s Application Stages (dev / test / stage / prod)",
-      "type": "row"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 0,
-        "y": 29
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{health_status=\"Healthy\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-dev\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-dev\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "DEV Healthy (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 6,
-        "y": 29
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{health_status=\"Healthy\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-test\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-test\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "TEST Healthy (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 12,
-        "y": 29
-      },
-      "id": 12,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{health_status=\"Healthy\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-stage\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-stage\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "STAGE Healthy (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 29
-      },
-      "id": 14,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{health_status=\"Healthy\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-prod\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-prod\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "PROD Healthy (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 0,
-        "y": 33
-      },
-      "id": 9,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{sync_status=\"Synced\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-dev\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-dev\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "DEV Synced (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 6,
-        "y": 33
-      },
-      "id": 11,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{sync_status=\"Synced\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-test\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-test\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "TEST Synced (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 12,
-        "y": 33
-      },
-      "id": 13,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{sync_status=\"Synced\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-stage\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-stage\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "STAGE Synced (%)",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 60
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 33
-      },
-      "id": 15,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "expr": "(count(argocd_app_info{sync_status=\"Synced\", job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-prod\"}) / count(argocd_app_info{job=\"argocd-application-controller-metrics\", dest_namespace=\"contoso-app-prod\"})) * 100",
-          "refId": "A"
-        }
-      ],
-      "title": "PROD Synced (%)",
-      "type": "stat"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 37
-      },
       "id": 16,
       "title": "Cluster Health",
       "type": "row"
@@ -1301,7 +800,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 29
       },
       "id": 17,
       "options": {
@@ -1389,7 +888,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 29
       },
       "id": 18,
       "options": {
@@ -1427,8 +926,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "yellow",
@@ -1448,7 +946,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 46
+        "y": 37
       },
       "id": 19,
       "options": {
@@ -1477,13 +975,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(kube_node_status_condition{condition=\"Ready\",status=\"true\"}) / sum(kube_node_status_condition{condition=\"Ready\"})) * 100",
+          "expr": "(sum(kube_pod_status_ready{condition=\"true\"}) / sum(kube_pod_status_ready)) * 100",
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Ready (%)",
+      "title": "Pods Healthy (%)",
       "type": "stat"
     },
     {
@@ -1543,7 +1041,7 @@
         "h": 8,
         "w": 19,
         "x": 5,
-        "y": 46
+        "y": 37
       },
       "id": 21,
       "options": {
@@ -1598,13 +1096,13 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Contoso GitOps and Cluster Health",
   "uid": "contoso-gitops-cluster-health",
-  "version": 14,
+  "version": 16,
   "weekStart": ""
 }
