@@ -1,11 +1,9 @@
 image:
   repository: ghcr.io/quovadis1212/contoso-app
-  tag: "latest"
-
+  tag: "5ab967e2f03285294ff5fdfc06b7b05f89f5c3b9"
 service:
   type: ClusterIP
   port: 3000
-
 resources:
   limits:
     cpu: 250m
@@ -13,7 +11,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 ingress:
   enabled: true
   host: contoso-app.dev.contoso.local
