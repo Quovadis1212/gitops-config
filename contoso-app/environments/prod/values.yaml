@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/quovadis1212/contoso-app
-  tag: "86c7ce535b1d03e18bd812a10f6fc385ce5fe775"
+  tag: "bca9ac8de84790e92287173516893740d7b9093e"
 service:
   type: ClusterIP
   port: 3000
